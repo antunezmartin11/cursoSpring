@@ -24,6 +24,7 @@ public class Usuario implements UserDetails {
     private String telefono;
     private boolean enabled=true;
     private String perfil;
+    private String dni;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "usuario")
     @JsonIgnore
