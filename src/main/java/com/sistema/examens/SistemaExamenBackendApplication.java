@@ -24,26 +24,26 @@ public class SistemaExamenBackendApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-       /* Usuario usuario = new Usuario();
-        usuario.setNombre("Martin");
-        usuario.setApellidos("Antunez");
-        usuario.setUsername("mantunez");
-        usuario.setPassword("123456");
-        usuario.setEmail("antunezmartin@outlook.com");
-        usuario.setTelefono("940303627");
-        usuario.setPerfil("foto.png");
-
-        Rol rol = new Rol();
-        rol.setRolId(1L);
-        rol.setNombre("ADMIN");
-
-        Set<UsuarioRol> usuarioRoles = new HashSet<>();
-        UsuarioRol usuarioRol = new UsuarioRol();
-        usuarioRol.setRol(rol);
-        usuarioRol.setUsuario(usuario);
-        usuarioRoles.add(usuarioRol);
-
-        Usuario usuarioGuardado = usuarioServicio.guardarUsuario(usuario, usuarioRoles);
-        System.out.println(usuarioGuardado.getUsername());*/
+//        Usuario usuario = new Usuario();
+////        usuario.setNombre("Yoel");
+////        usuario.setApellidos("Antunez");
+//        usuario.setUsername("mantunez");
+//        usuario.setPassword("123456");
+////        usuario.setEmail("antunezomartin@outlook.com");
+////        usuario.setTelefono("9403063627");
+//        usuario.setPerfil("foto.png");
+//
+//        Rol rol = new Rol();
+//        rol.setRolId(1L);
+//        rol.setNombre("ADMIN");
+//
+//        Set<UsuarioRol> usuarioRoles = new HashSet<>();
+//        UsuarioRol usuarioRol = new UsuarioRol();
+//        usuarioRol.setRol(rol);
+//        usuarioRol.setUsuario(usuario);
+//        usuarioRoles.add(usuarioRol);
+//
+//        Usuario usuarioGuardado = usuarioServicio.guardarUsuario(usuario, usuarioRoles);
+//        System.out.println(usuarioGuardado.getUsername());
     }
 }

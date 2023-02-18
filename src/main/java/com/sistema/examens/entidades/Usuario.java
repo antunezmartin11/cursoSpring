@@ -18,17 +18,16 @@ public class Usuario implements UserDetails {
 
     private String username;
     private String password;
-    private String nombre;
-    private String apellidos;
-    private String email;
-    private String telefono;
     private boolean enabled=true;
     private String perfil;
-    private String dni;
+
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "usuario")
     @JsonIgnore
     private Set<UsuarioRol> usuarioRoles = new HashSet<>();
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "usuario")
+    private Persona persona;
 
     public Long getId() {
         return id;
@@ -78,37 +77,6 @@ public class Usuario implements UserDetails {
         this.password = password;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
     public boolean isEnabled() {
         return enabled;
