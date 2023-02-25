@@ -18,6 +18,7 @@ public class SeccionServicioImpl implements SeccionServicio {
         if(seccionNueva !=null){
             System.out.println("Seccion ya existe");
         }else{
+
             seccionNueva = seccionRepositorio.save(seccion);
         }
         return seccionNueva;

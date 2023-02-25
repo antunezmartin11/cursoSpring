@@ -1,6 +1,7 @@
 package com.sistema.examens.entidades;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -12,6 +13,17 @@ public class Grado {
     private Long id;
 
     private String nombre;
+
+    @NotNull
+    private boolean enabled = true;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @ManyToOne()
     @JoinColumn(name = "fk_seccion")

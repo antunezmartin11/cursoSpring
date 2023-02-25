@@ -1,6 +1,8 @@
 package com.sistema.examens.entidades;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -10,7 +12,20 @@ public class Seccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSeccion;
 
+    @NotNull
+    @NotBlank
     private String nombre;
+
+    @NotNull
+    private boolean enabled=true;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @OneToMany(mappedBy = "seccion", cascade = CascadeType.ALL)
     private Set<Grado> grado;
