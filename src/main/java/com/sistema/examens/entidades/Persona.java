@@ -22,41 +22,9 @@ public class Persona {
 
     private Character situacion;
 
-    @OneToOne
-    @JoinColumn(name="fk_usuario", updatable = false, nullable = false)
-    private Usuario usuario;
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 
-    public com.sistema.examens.entidades.tipoPersona getTipoPersona() {
-        return tipoPersona;
-    }
-
-    public void setTipoPersona(com.sistema.examens.entidades.tipoPersona tipoPersona) {
-        this.tipoPersona = tipoPersona;
-    }
-
-    @ManyToOne()
-    @JoinColumn(name = "fk_tipoPersona")
-    private tipoPersona tipoPersona;
-
-    @ManyToOne()
-    @JoinColumn(name = "fk_grado")
-    private Grado grado;
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
-    }
 
     public Long getIdPersona() {
         return idPersona;

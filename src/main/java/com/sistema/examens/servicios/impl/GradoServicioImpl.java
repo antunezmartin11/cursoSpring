@@ -6,6 +6,9 @@ import com.sistema.examens.servicios.GradoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class GradoServicioImpl implements GradoServicio {
 
@@ -21,5 +24,16 @@ public class GradoServicioImpl implements GradoServicio {
             gradoNuevo = gradoRepository.save(grado);
         }
         return gradoNuevo;
+    }
+
+    @Override
+    public List<Grado> listarGrado() throws Exception{
+        List<Grado> lista = gradoRepository.findAll();
+        if(lista.size()>0){
+            return lista;
+        }else {
+            return new ArrayList<>();
+        }
+
     }
 }

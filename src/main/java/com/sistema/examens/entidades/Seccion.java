@@ -27,16 +27,7 @@ public class Seccion {
         this.enabled = enabled;
     }
 
-    @OneToMany(mappedBy = "seccion", cascade = CascadeType.ALL)
-    private Set<Grado> grado;
 
-    public Long getIdSeccion() {
-        return idSeccion;
-    }
-
-    public void setIdSeccion(Long idSeccion) {
-        this.idSeccion = idSeccion;
-    }
 
     public String getNombre() {
         return nombre;
@@ -46,13 +37,6 @@ public class Seccion {
         this.nombre = nombre;
     }
 
-    public Set<Grado> getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Set<Grado> grado) {
-        this.grado = grado;
-    }
 
     public Seccion() {
     }

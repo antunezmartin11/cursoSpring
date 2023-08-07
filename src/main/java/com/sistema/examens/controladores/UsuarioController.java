@@ -38,6 +38,8 @@ public class UsuarioController {
 
         usuarioRoles.add(usuarioRol);
 
+
+
         return usuarioServicio.guardarUsuario(usuario, usuarioRoles);
     }
 

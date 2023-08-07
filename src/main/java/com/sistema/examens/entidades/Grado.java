@@ -25,20 +25,7 @@ public class Grado {
         this.enabled = enabled;
     }
 
-    @ManyToOne()
-    @JoinColumn(name = "fk_seccion")
-    private Seccion seccion;
 
-    @OneToMany(mappedBy = "grado", cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Persona> persona;
-
-    public Set<Persona> getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Set<Persona> persona) {
-        this.persona = persona;
-    }
 
     public Long getId() {
         return id;
@@ -56,13 +43,6 @@ public class Grado {
         this.nombre = nombre;
     }
 
-    public Seccion getSeccion() {
-        return seccion;
-    }
-
-    public void setSeccion(Seccion seccion) {
-        this.seccion = seccion;
-    }
 
     public Grado() {
     }
