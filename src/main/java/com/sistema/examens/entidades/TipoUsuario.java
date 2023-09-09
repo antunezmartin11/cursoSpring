@@ -1,8 +1,14 @@
 package com.sistema.examens.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "tipo_usuario")
 public class TipoUsuario {
     @Id
@@ -11,32 +17,8 @@ public class TipoUsuario {
 
     private String tipo;
 
-    private boolean enabled;
+    private String enabled;
 
-    public String getTipo() {
-        return tipo;
-    }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Long getIdTipoUsuario() {
-        return idTipoUsuario;
-    }
-
-    public void setIdTipoUsuario(Long idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
-    }
-
-    public TipoUsuario() {
-    }
 }

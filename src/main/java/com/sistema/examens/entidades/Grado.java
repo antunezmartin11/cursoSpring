@@ -14,6 +14,8 @@ public class Grado {
 
     private String nombre;
 
+    private String abreviatura;
+
     @NotNull
     private boolean enabled = true;
 
@@ -43,6 +45,13 @@ public class Grado {
         this.nombre = nombre;
     }
 
+    public String getAbreviatura() {
+        return abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
+    }
 
     public Grado() {
     }

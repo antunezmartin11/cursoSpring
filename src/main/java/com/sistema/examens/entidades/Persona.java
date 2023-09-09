@@ -1,6 +1,9 @@
 package com.sistema.examens.entidades;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -8,6 +11,7 @@ import java.sql.Date;
 @Table(name = "persona")
 public class Persona {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
 
     private String dni;
@@ -18,9 +22,10 @@ public class Persona {
     private String email;
 
     private Integer telefono;
+
     private Date fechaNacimiento;
 
-    private Character situacion;
+    private String situacion;
 
 
 
@@ -74,6 +79,15 @@ public class Persona {
         this.telefono = telefono;
     }
 
+
+    public String getSituacion() {
+        return situacion;
+    }
+
+    public void setSituacion(String situacion) {
+        this.situacion = situacion;
+    }
+
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -81,15 +95,6 @@ public class Persona {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
-    public Character getSituacion() {
-        return situacion;
-    }
-
-    public void setSituacion(Character situacion) {
-        this.situacion = situacion;
-    }
-
 
     public Persona() {
     }

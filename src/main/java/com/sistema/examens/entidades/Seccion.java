@@ -19,6 +19,8 @@ public class Seccion {
     @NotNull
     private boolean enabled=true;
 
+    private String abreviatura;
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -37,6 +39,21 @@ public class Seccion {
         this.nombre = nombre;
     }
 
+    public Long getIdSeccion() {
+        return idSeccion;
+    }
+
+    public void setIdSeccion(Long idSeccion) {
+        this.idSeccion = idSeccion;
+    }
+
+    public String getAbreviatura() {
+        return abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
+    }
 
     public Seccion() {
     }

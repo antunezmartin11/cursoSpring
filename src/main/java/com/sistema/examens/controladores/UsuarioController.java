@@ -28,24 +28,32 @@ public class UsuarioController {
         usuario.setPassword(this.bCryptPasswordEncoder.encode(usuario.getPassword()));
         Set<UsuarioRol> usuarioRoles = new HashSet<>();
 
-        Rol  rol = new Rol();
-        rol.setRolId(2L);
-        rol.setNombre("NORMAL");
-
         UsuarioRol usuarioRol= new UsuarioRol();
-        usuarioRol.setUsuario(usuario);
-        usuarioRol.setRol(rol);
+        for (UsuarioRol usuarioRole: usuario.getUsuarioRoles() ){
+            if(usuarioRole.getRol()!=null){
+                usuarioRol.setRol(usuarioRole.getRol());
+                usuarioRol.setUsuario(usuario);
+            }
 
+        }
+
+        //Rol  rol = new Rol();
+        //rol.setRolId(2L);
+        //rol.setNombre("NORMAL");
         usuarioRoles.add(usuarioRol);
-
-
-
         return usuarioServicio.guardarUsuario(usuario, usuarioRoles);
     }
 
     @GetMapping("/{username}")
     public Usuario obtenerUsuario(@PathVariable("username") String username){
-        return usuarioServicio.obtenerUsuario(username);
+
+        Usuario datUsuario = usuarioServicio.obtenerUsuario(username);
+
+        if (datUsuario != null){
+            return datUsuario;
+        }else{
+            return new Usuario();
+        }
     }
 
     @DeleteMapping("/{usuarioId}")
