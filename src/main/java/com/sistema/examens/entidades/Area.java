@@ -1,21 +1,25 @@
 package com.sistema.examens.entidades;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "tipo_contrato")
-public class TipoContrato {
+@Table(name = "area")
+public class Area {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idTipoContrato;
+    private Long idArea;
 
-    private String descripcion;
+    private String nombre;
+
+    private BigDecimal horas;
 
     private boolean estado;
 }

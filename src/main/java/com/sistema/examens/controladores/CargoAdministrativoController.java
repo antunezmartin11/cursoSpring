@@ -1,6 +1,6 @@
 package com.sistema.examens.controladores;
 
-import com.sistema.examens.entidades.Cargo_Administrativo;
+import com.sistema.examens.entidades.CargoAdministrativo;
 import com.sistema.examens.servicios.CargoAdministrativoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +15,17 @@ public class CargoAdministrativoController {
     private CargoAdministrativoService cargoAdministrativoService;
 
     @PostMapping("/")
-    public Cargo_Administrativo guardarCargo(@RequestBody Cargo_Administrativo cargoAdministrativo) throws Exception{
+    public CargoAdministrativo guardarCargo(@RequestBody CargoAdministrativo cargoAdministrativo) throws Exception{
         return cargoAdministrativoService.guardarCargoAdm(cargoAdministrativo);
     }
 
     @GetMapping("/listarCargoAdmin")
-    public List<Cargo_Administrativo> listarCargoAdmin()throws Exception{
+    public List<CargoAdministrativo> listarCargoAdmin()throws Exception{
         return cargoAdministrativoService.listarCargoAdm();
     }
 
     @GetMapping("/obtenerCargo")
-    public Cargo_Administrativo obtener(@RequestBody  Cargo_Administrativo cargoAdministrativo)throws Exception{
+    public CargoAdministrativo obtener(@RequestBody CargoAdministrativo cargoAdministrativo)throws Exception{
         return cargoAdministrativoService.obtenerCargo(cargoAdministrativo.getDescripcion());
     }
 

@@ -8,4 +8,5 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
     public Persona findBydni(String dni);
 
+    public Long countBydni(String dni);
 }

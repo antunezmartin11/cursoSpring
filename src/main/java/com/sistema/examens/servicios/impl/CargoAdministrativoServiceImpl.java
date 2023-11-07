@@ -1,7 +1,6 @@
 package com.sistema.examens.servicios.impl;
 
-import com.sistema.examens.dto.usuarioDTO;
-import com.sistema.examens.entidades.Cargo_Administrativo;
+import com.sistema.examens.entidades.CargoAdministrativo;
 import com.sistema.examens.excepciones.UsuarioFoundException;
 import com.sistema.examens.repositorios.CargoAdministrativoRepository;
 import com.sistema.examens.servicios.CargoAdministrativoService;
@@ -17,11 +16,11 @@ public class CargoAdministrativoServiceImpl implements CargoAdministrativoServic
     @Autowired
     CargoAdministrativoRepository cargoAdministrativoRepository;
 
-    public Cargo_Administrativo guardarCargoAdm(Cargo_Administrativo request) throws Exception{
+    public CargoAdministrativo guardarCargoAdm(CargoAdministrativo request) throws Exception{
 
-        Cargo_Administrativo verificarExiste = cargoAdministrativoRepository.findByDescripcion(request.getDescripcion());
+        CargoAdministrativo verificarExiste = cargoAdministrativoRepository.findByDescripcion(request.getDescripcion());
         if(verificarExiste==null){
-            Cargo_Administrativo nuevoRegistro = new Cargo_Administrativo();
+            CargoAdministrativo nuevoRegistro = new CargoAdministrativo();
             nuevoRegistro.setDescripcion(request.getDescripcion());
             nuevoRegistro.setEstado(true);
             nuevoRegistro = cargoAdministrativoRepository.save(nuevoRegistro);
@@ -31,8 +30,8 @@ public class CargoAdministrativoServiceImpl implements CargoAdministrativoServic
         }
     }
 
-    public List<Cargo_Administrativo> listarCargoAdm() throws Exception{
-        List<Cargo_Administrativo> lista = cargoAdministrativoRepository.findAll();
+    public List<CargoAdministrativo> listarCargoAdm() throws Exception{
+        List<CargoAdministrativo> lista = cargoAdministrativoRepository.findAll();
         if(lista.size()>0){
             return lista;
         }else {
@@ -40,8 +39,8 @@ public class CargoAdministrativoServiceImpl implements CargoAdministrativoServic
         }
     }
 
-    public Cargo_Administrativo obtenerCargo(String nombre) throws Exception{
-        Cargo_Administrativo obtenerCargo = cargoAdministrativoRepository.findByDescripcion(nombre);
+    public CargoAdministrativo obtenerCargo(String nombre) throws Exception{
+        CargoAdministrativo obtenerCargo = cargoAdministrativoRepository.findByDescripcion(nombre);
         if (obtenerCargo!=null){
             return obtenerCargo;
         }else {

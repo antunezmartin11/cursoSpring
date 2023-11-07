@@ -8,6 +8,9 @@ import com.sistema.examens.servicios.AlumnoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AlumnoServicioImpl implements AlumnoServicio {
 
@@ -34,5 +37,15 @@ public class AlumnoServicioImpl implements AlumnoServicio {
         Alumno alumnoRegistrado = alumnoRepository.save(alumnoRegistro);
 
         return alumnoRegistrado;
+    }
+
+    @Override
+    public List<Alumno> listarAlumno() throws Exception{
+        List<Alumno> lista = alumnoRepository.findAll();
+        if(lista.size()>0){
+            return lista;
+        }else
+            return new ArrayList<Alumno>();
+
     }
 }
