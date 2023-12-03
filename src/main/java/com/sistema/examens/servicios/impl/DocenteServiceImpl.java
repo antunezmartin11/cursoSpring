@@ -1,6 +1,6 @@
 package com.sistema.examens.servicios.impl;
 
-import com.sistema.examens.dto.DocenteMapper;
+import com.sistema.examens.dto.mapper.DocenteMapper;
 import com.sistema.examens.dto.docenteDTO;
 import com.sistema.examens.entidades.Docente;
 import com.sistema.examens.repositorios.DocenteRepositorio;

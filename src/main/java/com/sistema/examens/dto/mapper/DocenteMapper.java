@@ -1,5 +1,6 @@
-package com.sistema.examens.dto;
+package com.sistema.examens.dto.mapper;
 
+import com.sistema.examens.dto.docenteDTO;
 import com.sistema.examens.entidades.Docente;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
