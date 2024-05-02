@@ -39,5 +39,16 @@ private SeccionServicio seccionServicio;
         return respuesta;
     }
 
+    @PostMapping("/editarSeccion")
+    public respuestaDTO editarSeccion(@RequestBody seccionDTO seccion) throws Exception{
+        respuestaDTO respuesta = new respuestaDTO();
+        return seccionServicio.editarSeccion(seccion);
+    }
+
+    @DeleteMapping("/eliminarSeccion/{id}")
+    public respuestaDTO eliminarSeccion(@PathVariable Long id) throws Exception{
+
+        return seccionServicio.eliminarSeccion(id);
+    }
 }
 

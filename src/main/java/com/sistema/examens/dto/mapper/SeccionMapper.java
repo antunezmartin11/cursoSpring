@@ -16,7 +16,9 @@ public interface SeccionMapper {
             @Mapping(target = "estado", expression = "java(seccion.isEnabled() ? \"Activa\" : \"Inactiva\")")
     })
     seccionDTO convertirSeccionToSeccionDTO(Seccion seccion);
-
+    @Mappings({
+            @Mapping(target = "enabled", expression = "java(\"Activa\".equals(seccionDTO.getEstado()))")
+    })
     Seccion convertirSeccionDTOToSeccion(seccionDTO seccionDTO);
 
 }

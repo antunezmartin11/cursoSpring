@@ -1,9 +1,11 @@
 package com.sistema.examens.controladores;
 
+import com.sistema.examens.dto.areaDTO;
 import com.sistema.examens.dto.respuestaDTO;
 import com.sistema.examens.entidades.Area;
 import com.sistema.examens.servicios.AreaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,33 +18,23 @@ public class AreaController {
     @Autowired
     AreaServicio areaServicio;
 
-    @PostMapping("/")
-    public respuestaDTO guardar(@RequestBody Area request) throws Exception{
-        Area registro = areaServicio.guardar(request);
-        respuestaDTO respuesta = new respuestaDTO();
-        if(registro!=null){
-            respuesta.setCodigo("200");
-            respuesta.setData(registro);
-            respuesta.setMensaje("Registrado correctamente");
-        }else {
-            respuesta.setCodigo("500");
-            respuesta.setData(registro);
-            respuesta.setMensaje("Ocurrio un error");
-        }
+    @PostMapping("/guardar")
+    @ResponseStatus(HttpStatus.CREATED)
+    public respuestaDTO guardar(@RequestBody areaDTO request) throws Exception{
 
-        return respuesta;
+        return areaServicio.guardar(request);
     }
 
     @GetMapping("/listarArea")
     public respuestaDTO listar() throws Exception{
-        List<Area> lista = areaServicio.listarArea();
+        List<areaDTO> lista = areaServicio.listarArea();
         respuestaDTO respuesta = new respuestaDTO();
         if (lista!=null){
-            respuesta.setCodigo("200");
+            respuesta.setCodigo(HttpStatus.OK.toString());
             respuesta.setData(lista);
-            respuesta.setMensaje("Registrado correctamente");
+            respuesta.setMensaje("Registros recuperados");
         }else {
-            respuesta.setCodigo("500");
+            respuesta.setCodigo(String.valueOf(HttpStatus.FOUND));
             respuesta.setData(lista);
             respuesta.setMensaje("Ocurrio un error");
         }
@@ -51,19 +43,12 @@ public class AreaController {
     }
 
     @GetMapping("/obtenerXnombre")
-    public respuestaDTO obtener(@RequestBody Area area) throws Exception{
-        Area registro = areaServicio.obtenerxNombre(area.getNombre());
-        respuestaDTO respuesta = new respuestaDTO();
-        if(registro!=null){
-            respuesta.setCodigo("200");
-            respuesta.setData(registro);
-            respuesta.setMensaje("Registrado correctamente");
-        }else {
-            respuesta.setCodigo("500");
-            respuesta.setData(registro);
-            respuesta.setMensaje("Ocurrio un error");
-        }
+    public respuestaDTO obtener(@RequestBody areaDTO area) throws Exception{
+            return areaServicio.obtenerxNombre(area.getNombre());
+    }
 
-        return respuesta;
+    @PostMapping("/modificarArea/{id}")
+    public respuestaDTO modificar(@PathVariable Long id,  @RequestBody areaDTO area) throws Exception{
+        return areaServicio.actualizarArea(id, area);
     }
 }

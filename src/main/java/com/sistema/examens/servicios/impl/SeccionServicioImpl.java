@@ -23,8 +23,9 @@ public class SeccionServicioImpl implements SeccionServicio {
 
     @Override
     public respuestaDTO guardarSeccion(seccionDTO seccion) throws Exception{
-        Seccion seccionNueva = seccionRepositorio.findByNombre(seccion.getNombre());
+        Seccion seccionNueva = seccionRepositorio.findByIdSeccion(seccion.getIdSeccion());
         respuestaDTO respuesta = new respuestaDTO();
+
         if(seccionNueva !=null){
             System.out.println("Seccion ya existe");
             seccionDTO seccionReg = SeccionMapper.mapper.convertirSeccionToSeccionDTO(seccionNueva);
@@ -41,6 +42,7 @@ public class SeccionServicioImpl implements SeccionServicio {
             respuesta.setCodigo("200");
             respuesta.setData(seccionReg);
         }
+
         return  respuesta;
     }
 
@@ -54,5 +56,44 @@ public class SeccionServicioImpl implements SeccionServicio {
         return listaSeccion;
     }
 
+    @Override
+    public respuestaDTO editarSeccion(seccionDTO seccion) throws Exception{
+        Seccion buscarSeccion = seccionRepositorio.findByIdSeccion(seccion.getIdSeccion());
+        respuestaDTO respuesta = new respuestaDTO();
+        if(buscarSeccion !=null){
+            //System.out.println("Seccion ya existe");
+            buscarSeccion.setAbreviatura(seccion.getAbreviatura());
+            buscarSeccion.setNombre(seccion.getNombre());
+            buscarSeccion.setEnabled(seccion.getEstado().equals("Activa")?true : false);
+
+            Seccion seccionUpdate = seccionRepositorio.save(buscarSeccion);
+            seccionDTO seccionReg = SeccionMapper.mapper.convertirSeccionToSeccionDTO(seccionUpdate);
+
+            respuesta.setMensaje("Seccion modificada");
+            respuesta.setCodigo("200");
+            respuesta.setData(seccionReg);
+        }else{
+            respuesta.setMensaje("seccion no encontrada");
+            respuesta.setCodigo("404");
+            respuesta.setData(null);
+        }
+        return  respuesta;
+    }
+    @Override
+    public respuestaDTO eliminarSeccion(Long id) throws Exception{
+        respuestaDTO respuesta = new respuestaDTO();
+        Seccion buscarSeccion = seccionRepositorio.findByIdSeccion(id);
+        if(buscarSeccion!=null){
+            seccionRepositorio.delete(buscarSeccion);
+            respuesta.setMensaje("seccion eliminada");
+            respuesta.setCodigo("200");
+            respuesta.setData(null);
+        }else {
+            respuesta.setMensaje("seccion no encontrada");
+            respuesta.setCodigo("404");
+            respuesta.setData(null);
+        }
+        return respuesta;
+    }
 
 }

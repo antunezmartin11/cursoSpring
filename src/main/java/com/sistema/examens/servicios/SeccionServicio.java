@@ -11,4 +11,8 @@ public interface SeccionServicio {
     public respuestaDTO guardarSeccion(seccionDTO seccion) throws  Exception;
 
     public List<seccionDTO> listar() throws Exception;
+
+    public respuestaDTO editarSeccion(seccionDTO seccion) throws  Exception;
+
+    public respuestaDTO eliminarSeccion(Long id) throws  Exception;
 }
